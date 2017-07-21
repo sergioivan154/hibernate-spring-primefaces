@@ -3,22 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id = "mundoBean" class = "com.sergio.spring.Mundo">
+	<bean id = "mundoBean" class = "com.sergio.spring.Mundo" autowire="byName" scope="singleton" lazy-init="true"><!-- nos olvidamos de las propiedades de ese objeto que tengan que ver con ese nombre, lazy-init para cargar los objetos cada que se requiere no cuando la aplicacion se crea -->
 		<!--<property name="saludo" value = "HolaMundo!"></property>-->
 		<!-- Va pasando parametro por parametro -->
 		<!--  <constructor-arg type = "String" value = "Mosca"></constructor-arg> -->
 		<property name="saludo" value = "Hola planeta "></property>
-		<property name="planeta">
-			<bean id = "planetaBean" class = "com.sergio.spring.Planeta">
+		<!-- <property name="planeta" ref = "planetaBean"> -->
+			<!-- <bean id = "planetaBean" class = "com.sergio.spring.Planeta" name = "objetoPersonabean">
 				<property name="nombre" value = "Tierra"></property>
-			</bean>
-		</property>
+			</bean> 
+		</property>-->
 		<!--  <property name="planeta" ref = "planetaBean"></property>-->
 	</bean>
 
-	<!-- <bean id = "planetaBean" class = "com.sergio.spring.Planeta">
+	<bean id = "planeta" class = "com.sergio.spring.Planeta">
 		<property name="nombre" value = "Tierra"></property>
-		
-		
-	</bean> -->
+	</bean> 
+	
+	
+	<alias name = "mundoBean" alias = "objetoMundoBean"></alias>
 </beans>
