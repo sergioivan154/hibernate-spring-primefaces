@@ -1,4 +1,4 @@
-package com.jsf.Entidades;
+package holaMundo.Entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

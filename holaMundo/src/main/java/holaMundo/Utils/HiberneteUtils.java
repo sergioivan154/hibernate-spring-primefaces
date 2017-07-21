@@ -1,4 +1,4 @@
-package com.jsf.Utils;
+package holaMundo.Utils;
 
 
 import org.hibernate.SessionFactory;

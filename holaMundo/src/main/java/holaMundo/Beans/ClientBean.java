@@ -1,12 +1,12 @@
-package com.jsf.Beans;
+package holaMundo.Beans;
 
 
 import javax.faces.bean.ManagedBean;
 
 import org.hibernate.Session;
 
-import com.jsf.Entidades.Client;
-import com.jsf.Utils.HiberneteUtils;
+import holaMundo.Entidades.Client;
+import holaMundo.Utils.HiberneteUtils;
 
 @ManagedBean(name="clientBean")
 public class ClientBean {
