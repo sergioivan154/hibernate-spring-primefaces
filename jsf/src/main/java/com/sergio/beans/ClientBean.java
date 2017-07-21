@@ -12,6 +12,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sergio.entidades.Client;
+import com.sergio.spring.Mundo;
 import com.sergio.utilidades.HibernateUtil;
 
 
@@ -49,15 +50,26 @@ public class ClientBean {
 		}
 		session.close();
 		
-		//ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class); //para no mandar a llamar asi el archivo xml tan directo
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+		//ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class); //para no mandar a llamar asi el archivo xml tan directo
 		//Mundo m = (Mundo) applicationContext.getBean("mundoBean"); //patron de diseño factory, un id y regresa una instancia
 		//Mundo m = (Mundo) applicationContext.getBean(Mundo.class);
-		Mundo m = (Mundo) applicationContext.getBean("mundoBeanAppConfig"); 
 		
+		Mundo m = (Mundo) applicationContext.getBean("mundoBean"); 
+		
+		clientes += m.getSaludo() + m.getPlaneta().getNombre();  
+		m.setSaludo("nuevo saludo");
 		((AbstractApplicationContext) applicationContext).close(); //liberar un recurso
 		
-		return clientes + m.getSaludo();
+		return clientes;
 	}
 	
+	public String getSaludo() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+		Mundo m = (Mundo) applicationContext.getBean("mundoBean"); 
+		((AbstractApplicationContext) applicationContext).close(); //liberar un recurso
+		
+		return m.getSaludo();
+		
+	}
 }

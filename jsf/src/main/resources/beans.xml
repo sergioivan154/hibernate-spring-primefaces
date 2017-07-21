@@ -3,8 +3,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id = "mundoBean" class = "com.sergio.beans.Mundo">
-		<property name="saludo" value = "HolaMundo!"></property>
+	<bean id = "mundoBean" class = "com.sergio.spring.Mundo">
+		<!--<property name="saludo" value = "HolaMundo!"></property>-->
+		<!-- Va pasando parametro por parametro -->
+		<!--  <constructor-arg type = "String" value = "Mosca"></constructor-arg> -->
+		<property name="saludo" value = "Hola planeta "></property>
+		<property name="planeta">
+			<bean id = "planetaBean" class = "com.sergio.spring.Planeta">
+				<property name="nombre" value = "Tierra"></property>
+			</bean>
+		</property>
+		<!--  <property name="planeta" ref = "planetaBean"></property>-->
 	</bean>
 
+	<!-- <bean id = "planetaBean" class = "com.sergio.spring.Planeta">
+		<property name="nombre" value = "Tierra"></property>
+		
+		
+	</bean> -->
 </beans>
