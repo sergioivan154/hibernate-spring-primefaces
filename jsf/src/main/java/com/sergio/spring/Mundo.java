@@ -1,8 +1,10 @@
 package com.sergio.spring;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 
-public class Mundo {
+public class Mundo implements InitializingBean, DisposableBean {
 	
 	//@Value("hola ivan")
 	private String saludo;
@@ -23,6 +25,18 @@ public class Mundo {
 
 	public void setPlaneta(Planeta planeta) {
 		this.planeta = planeta;
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		// TODO Auto-generated method stub antes de inicializar
+		
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub despues de destruir
+		
 	}
 	
 	
