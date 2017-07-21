@@ -6,6 +6,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import org.hibernate.Session;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sergio.entidades.Client;
 import com.sergio.utilidades.HibernateUtil;
@@ -45,8 +49,15 @@ public class ClientBean {
 		}
 		session.close();
 		
+		//ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class); //para no mandar a llamar asi el archivo xml tan directo
+		//Mundo m = (Mundo) applicationContext.getBean("mundoBean"); //patron de diseño factory, un id y regresa una instancia
+		//Mundo m = (Mundo) applicationContext.getBean(Mundo.class);
+		Mundo m = (Mundo) applicationContext.getBean("mundoBeanAppConfig"); 
 		
-		return clientes;
+		((AbstractApplicationContext) applicationContext).close(); //liberar un recurso
+		
+		return clientes + m.getSaludo();
 	}
 	
 }
