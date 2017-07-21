@@ -15,5 +15,9 @@
 		<p:commandButton action="#{clientBean.guardarCliente()}"
 			value="Crear cliente!"></p:commandButton>
 	</h:form>
+	
+	<h:form>
+		<p:inputTextarea value="#{clientBean.getClientes()}"></p:inputTextarea>
+	</h:form>
 </body>
 </html>
